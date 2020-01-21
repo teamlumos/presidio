@@ -18,6 +18,13 @@ type analyzeResponseWrapper struct {
 
 // swagger:parameters analyzeRequest
 type analyzeParamsWrapper struct {
+
+	// Project ID
+	//
+	// in: path
+	// required: true
+	ProjectId int `json:"projectId"`
+
 	// The request body
 	// in:body
 	Body types.AnalyzeRequest
