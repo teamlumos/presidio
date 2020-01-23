@@ -1,3 +1,6 @@
+basePath: /api/v1
+consumes:
+- application/json
 definitions:
   AnalyzeRequest:
     description: AnalyzeRequest represents the request to the analyze service via
@@ -182,6 +185,11 @@ definitions:
         x-go-name: Recognizers
     type: object
     x-go-package: github.com/Microsoft/presidio-genproto/golang
+host: some-url.com
+info:
+  description: Documentation of our Presidio API.
+  title: Presidio.
+  version: 1.0.0
 paths:
   /analyzer/recognizers/:
     get:
@@ -250,6 +258,8 @@ paths:
           $ref: '#/responses/analyzeResponse'
       tags:
       - analyze
+produces:
+- application/json
 responses:
   allRecognizersGetResponse:
     description: A a list of all recognizers
@@ -270,4 +280,9 @@ responses:
     description: A Regognizer
     schema:
       $ref: '#/definitions/RecognizersGetResponse'
+schemes:
+- http
+securityDefinitions:
+  basic:
+    type: basic
 swagger: "2.0"
