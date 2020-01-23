@@ -162,6 +162,15 @@ definitions:
         x-go-name: Patterns
     type: object
     x-go-package: github.com/Microsoft/presidio-genproto/golang
+  RecognizerInsertOrUpdateRequest:
+    description: |-
+      RecognizerInsertOrUpdateRequest represents the request for
+      inserting a new or updating an existing pattern recognizer
+    properties:
+      value:
+        $ref: '#/definitions/PatternRecognizer'
+    type: object
+    x-go-package: github.com/Microsoft/presidio-genproto/golang
   RecognizersGetResponse:
     description: RecognizersGetResponse represents a response to a get request
     properties:
@@ -174,6 +183,15 @@ definitions:
     type: object
     x-go-package: github.com/Microsoft/presidio-genproto/golang
 paths:
+  /analyzer/recognizers/:
+    get:
+      description: Get all recognizers
+      operationId: getAllRecognizers
+      responses:
+        "200":
+          $ref: '#/responses/allRecognizersGetResponse'
+      tags:
+      - analyzer
   /analyzer/recognizers/{id}:
     get:
       description: Get an existing recognizer
@@ -188,6 +206,26 @@ paths:
       responses:
         "200":
           $ref: '#/responses/recognizersGetResponse'
+      tags:
+      - analyzer
+    post:
+      description: Insert a new recognizer
+      operationId: insertRecognizer
+      parameters:
+      - description: Recognizer name
+        in: path
+        name: id
+        required: true
+        type: string
+        x-go-name: Id
+      - description: Recognizer properties
+        in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/RecognizerInsertOrUpdateRequest'
+      responses:
+        "200":
+          $ref: '#/responses/insertRecognizersResponse'
       tags:
       - analyzer
   /projects/{projectId}/analyze:
@@ -213,6 +251,12 @@ paths:
       tags:
       - analyze
 responses:
+  allRecognizersGetResponse:
+    description: A a list of all recognizers
+    schema:
+      items:
+        $ref: '#/definitions/RecognizersGetResponse'
+      type: array
   analyzeResponse:
     description: A response includes a list of recognized fields in the text to be
       anonymized.
@@ -220,9 +264,10 @@ responses:
       items:
         $ref: '#/definitions/AnalyzeResult'
       type: array
+  insertRecognizersResponse:
+    description: Insert new recognizer response
   recognizersGetResponse:
-    description: A response includes a list of recognized fields in the text to be
-      anonymized.
+    description: A Regognizer
     schema:
       $ref: '#/definitions/RecognizersGetResponse'
 swagger: "2.0"
