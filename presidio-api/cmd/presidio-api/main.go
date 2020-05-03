@@ -7,8 +7,6 @@ import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 
-	"github.com/swaggo/http-swagger"
-
 	"github.com/Microsoft/presidio/pkg/cache"
 	log "github.com/Microsoft/presidio/pkg/logger"
 	"github.com/Microsoft/presidio/pkg/platform"
@@ -20,9 +18,7 @@ import (
 	store "github.com/Microsoft/presidio/presidio-api/cmd/presidio-api/api"
 
 	// This line is necessary for go-swagger to find the docs!
-	_ "github.com/Microsoft/presidio/presidio-api/cmd/presidio-api/docs"
-
-	httpSwagger "github.com/swaggo/http-swagger"
+	_ "github.com/Microsoft/presidio/presidio-api/cmd/presidio-api/docs"	
 )
 
 var api *store.API
@@ -89,7 +85,7 @@ func setupHTTPServer(port int, loglevel string) {
 
 	r := server.Setup(port, loglevel)
 
-	r.GET("/swagger", httpSwagger.WrapHandler)
+	r.GET("/swagger", getSwaggerSpec)
 
 	// api/v1 group
 	v1 := r.Group("/api/v1")
