@@ -19,6 +19,8 @@ import (
 
 	// This line is necessary for go-swagger to find the docs!
 	_ "github.com/Microsoft/presidio/presidio-api/cmd/presidio-api/docs"
+
+	httpSwagger "github.com/swaggo/http-swagger"
 )
 
 var api *store.API
@@ -85,7 +87,7 @@ func setupHTTPServer(port int, loglevel string) {
 
 	r := server.Setup(port, loglevel)
 
-	r.GET("/swagger/*any", docHandler)
+	r.GET("/swagger", httpSwagger.WrapHandler)
 
 	// api/v1 group
 	v1 := r.Group("/api/v1")

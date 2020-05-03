@@ -26,12 +26,6 @@ func getFieldTypes(c *gin.Context) {
 
 }
 
-func (d *Doc) docHandler(c context.Context, w http.ResponseWriter, r *http.Request) {
-   r.Header.Add("Content-Type", "application/json")
-   data, _ := ioutil.ReadFile("/docs/swagger.yaml")
-   w.Write(data)
-}
-
 func getActionTemplate(c *gin.Context) {
 	action := c.Param("action")
 	project := c.Param("project")
