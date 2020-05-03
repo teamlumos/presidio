@@ -17,9 +17,6 @@ import (
 	server "github.com/Microsoft/presidio/pkg/server"
 	store "github.com/Microsoft/presidio/presidio-api/cmd/presidio-api/api"
 
-	swaggerFiles "github.com/swaggo/files" 
-	"github.com/swaggo/gin-swagger"
-
 	// This line is necessary for go-swagger to find the docs!
 	_ "github.com/Microsoft/presidio/presidio-api/cmd/presidio-api/docs"
 )
@@ -88,7 +85,7 @@ func setupHTTPServer(port int, loglevel string) {
 
 	r := server.Setup(port, loglevel)
 
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	r.GET("/swagger/*any", docHandler)
 
 	// api/v1 group
 	v1 := r.Group("/api/v1")
