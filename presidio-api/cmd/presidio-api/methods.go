@@ -26,11 +26,6 @@ func getFieldTypes(c *gin.Context) {
 
 }
 
-func getSwaggerSpec(c *gin.Context) {	
-	server.WriteResponse(c, http.StatusOK, "test")
-
-}
-
 func getActionTemplate(c *gin.Context) {
 	action := c.Param("action")
 	project := c.Param("project")

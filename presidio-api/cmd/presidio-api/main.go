@@ -85,7 +85,9 @@ func setupHTTPServer(port int, loglevel string) {
 
 	r := server.Setup(port, loglevel)
 
-	r.GET("/swagger", getSwaggerSpec)
+	fs := http.FileServer(http.Dir("./swaggerui"))
+   r.PathPrefix("/swaggerui/").Handler
+     (http.StripPrefix("/swaggerui/", fs))
 
 	// api/v1 group
 	v1 := r.Group("/api/v1")
