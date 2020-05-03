@@ -32,10 +32,18 @@ Presidio can be integrated into any data pipeline for intelligent PII scrubbing.
 
 - [Presidio Features](docs/overview.md#features)
 - [Presidio Input and Output](docs/overview.md#input-and-output)
-- [API Spec](presidio-api/cmd/presidio-api/docs/readme.md)
 - [The Technology Stack](docs/overview.md#the-technology-stack)
+- [Architecture](docs/design.md)
 
-## API Samples
+## Presidio API
+
+Presidio API is served using the [presidio-api](presidio-api) golang service.
+Once Presidio is deployed, all APIs are exposed under the `/api/v1` group.
+An[API Spec](presidio-api/cmd/presidio-api/docs/readme.md) yaml file outlines the available APIs, request and response formats.
+
+[Presidio REST API Spec](presidio-api/cmd/presidio-api/docs/swagger.yaml)
+
+### API Samples
 
 - [Simple Text Analysis](docs/samples.md/#simple-text-analysis)
 - [Create Reusable Templates](docs/samples.md/#create-reusable-templates)
@@ -43,17 +51,6 @@ Presidio can be integrated into any data pipeline for intelligent PII scrubbing.
 - [Custom Anonymization](docs/samples.md/#custom-anonymization)
 - [Add Custom PII Entity Recognizer](docs/samples.md/#add-custom-pii-entity-recognizer)
 - [Image Anonymization](docs/samples.md/#image-anonymization)
-
-## Learn more
-
-More information can be found in [Presidio Documentation](https://microsoft.github.io/presidio/)
-
-- [Architecture](docs/design.md)
-- [Supported field types](docs/field_types.md)
-- [Database and storage scanner](docs/tutorial_scheduler.md)
-- [Adding new PII recognizers](docs/custom_fields.md)
-- [Generating Swagger file](presidio-api/cmd/presidio-api/docs/readme.md)
-- [Evaluating Presidio](https://github.com/microsoft/presidio-research)
 
 ## Deploying Presidio on a Kubernetes Cluster
 
@@ -104,6 +101,15 @@ Follow the [Deployment Guidelines](docs/deploy.md) for details:
 - :white_check_mark: - Working
 - :large_orange_diamond: - Partially supported (alpha)
 - :x: - Not supported yet
+
+## Learn more
+
+More information can be found in [Presidio Documentation](https://microsoft.github.io/presidio/)
+
+- [Supported field types](docs/field_types.md)
+- [Database and storage scanner](docs/tutorial_scheduler.md)
+- [Adding new PII recognizers](docs/custom_fields.md)
+- [Evaluating Presidio](https://github.com/microsoft/presidio-research)
 
 ## Contributing
 

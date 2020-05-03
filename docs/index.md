@@ -25,6 +25,7 @@ Development:
 - [Analyzer service tutorial](tutorial_analyzer.md)
 - [Calling the different services](tutorial_service.md)
 - [Connector developer guide](tutorial_connector.md)
+- [Generating Swagger file](../presidio-api/cmd/presidio-api/docs/readme.md)
 
 Productization:
 

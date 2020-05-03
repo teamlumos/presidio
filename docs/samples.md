@@ -1,5 +1,7 @@
 # Presidio API Samples
 
+Decide on a name for your Presidio project. In the samples bellow the project name is `<my-project>`.
+
 **Note:** All samples where created with [HTTPie](https://httpie.org/)
 
 - [Simple Text Analysis](#simple-text-analysis)
