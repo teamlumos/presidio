@@ -7,6 +7,8 @@ import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 
+	"github.com/swaggo/http-swagger"
+
 	"github.com/Microsoft/presidio/pkg/cache"
 	log "github.com/Microsoft/presidio/pkg/logger"
 	"github.com/Microsoft/presidio/pkg/platform"
