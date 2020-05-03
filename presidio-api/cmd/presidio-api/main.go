@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"os"
+	"net/http"
 
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
@@ -86,8 +87,7 @@ func setupHTTPServer(port int, loglevel string) {
 	r := server.Setup(port, loglevel)
 
 	fs := http.FileServer(http.Dir("./swaggerui"))
-   r.PathPrefix("/swaggerui/").Handler
-     (http.StripPrefix("/swaggerui/", fs))
+  r.PathPrefix("/swaggerui/").Handler(http.StripPrefix("/swaggerui/", fs))
 
 	// api/v1 group
 	v1 := r.Group("/api/v1")
