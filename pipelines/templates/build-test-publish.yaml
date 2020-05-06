@@ -124,7 +124,7 @@ stages:
       displayName: Pull Request Validation
       dependsOn: []
       pool:
-        name: 'presidio-agents-pool'
+        name: 'presidio-docker-agent'
         #vmImage: 'ubuntu-latest'
       jobs:
       - job: BuildTest
@@ -253,7 +253,7 @@ stages:
       displayName: Set Pipeline globals
       dependsOn: []
       pool:
-        name: 'presidio-agents-pool'
+        name: 'presidio-docker-agent'
         #vmImage: 'ubuntu-latest'
       jobs:
 
@@ -316,7 +316,7 @@ stages:
       displayName: Build Python
       dependsOn: Setup
       pool:
-        name: 'presidio-agents-pool'
+        name: 'presidio-docker-agent'
         #vmImage: 'ubuntu-latest'
       jobs:
         - job: GetDepsJob
@@ -396,7 +396,7 @@ stages:
       displayName: Build Golang
       dependsOn: Setup
       pool:
-        name: 'presidio-agents-pool'
+        name: 'presidio-docker-agent'
         #vmImage: 'ubuntu-latest'
       jobs:
 
@@ -513,7 +513,7 @@ stages:
       - PythonStage
       - GolangStage
       pool:
-        name: 'presidio-agents-pool'
+        name: 'presidio-docker-agent'
         #vmImage: 'ubuntu-latest'
       jobs: 
 
@@ -543,7 +543,7 @@ stages:
       dependsOn: 
       - TestFunctional
       pool:
-        name: 'presidio-agents-pool'
+        name: 'presidio-docker-agent'
         #vmImage: 'ubuntu-latest'
       variables:
           ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
