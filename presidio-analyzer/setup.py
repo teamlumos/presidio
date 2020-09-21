@@ -25,13 +25,14 @@ setuptools.setup(
     trusted_host=['pypi.org'],
     tests_require=['pytest', 'flake8==3.7.9', 'pylint==2.3.1'],
     install_requires=[
-        'cython==0.29.10',
-        'spacy==2.2.3',
-        'regex==2019.6.8',
-        'grpcio==1.21.1',
-        'protobuf==3.8.0',
-        'tldextract==2.2.1',
-        'knack==0.6.2'],
+        'cython==0.29.21', # Anything lower than this doesn't compile with Py3.8
+        'spacy==2.3.0',    # We have to be specific because Poetry will install
+                           # this specifically.
+        'regex>=2019.6.8',
+        'grpcio>=1.21.1',
+        'protobuf>=3.8.0',
+        'tldextract>=2.2.1',
+        'knack>=0.6.2'],
     include_package_data=True,
     license='MIT',
     scripts=[
